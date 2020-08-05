@@ -5,3 +5,4 @@ __pycache__/
 *.log
 *.synctex.gz
 *.dvi
+network2-report.pdf
