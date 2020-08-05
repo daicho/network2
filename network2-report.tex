@@ -1,0 +1,96 @@
+\documentclass[a4j,titlepage]{jsarticle}
+
+\usepackage[dvipdfmx]{graphicx,xcolor}
+\usepackage[top=20truemm,left=25truemm,right=25truemm]{geometry}
+\usepackage{amsmath}
+\usepackage{here}
+\usepackage{comment}
+\usepackage{url}
+\usepackage{plistings}
+\usepackage{tikz}
+\usepackage[framemethod=tikz]{mdframed}
+
+\renewcommand{\lstlistingname}{リスト}
+
+\newcommand{\chuo}[1]{\multicolumn{1}{|c|}{#1}}
+\newcommand{\inpt}[1]{\underline{#1}\,\setlength{\fboxsep}{1pt}\fbox{\small ↓}}
+\newcommand{\bvec}[1]{\mbox{\boldmath $#1$}}
+
+\lstdefinestyle{python}{
+  language=Python,
+  basicstyle=\small\ttfamily,
+  keywordstyle=\color[HTML]{0000E0},
+  stringstyle=\color[HTML]{A31515},
+  commentstyle=\upshape\color[HTML]{008000},
+  frame=trbl,
+  framesep=5pt,
+  columns=[l]{fullflexible},
+  numbers=left,
+  xleftmargin=3zw,
+  lineskip=-0.2ex,
+  breaklines=true,
+  showstringspaces=false,
+  tabsize=4,
+  keepspaces=true
+}
+
+\lstdefinestyle{text}{
+  language=,
+  basicstyle=\ttfamily,
+  frame=trbl,
+  framesep=5pt,
+  columns=[l]{fullflexible},
+  xleftmargin=3zw,
+  lineskip=-0.2ex,
+  showstringspaces=false,
+  tabsize=4,
+  keepspaces=true
+}
+
+\mdfsetup{
+  skipabove=5pt,
+  innertopmargin=10pt,
+  innerbottommargin=10pt,
+  roundcorner=10pt,
+  font=\ttfamily
+}
+
+
+\begin{document}
+
+
+\begin{titlepage}
+  \title{\huge{ネットワークプログラミングI\hspace{-.1em}I} \\ \LARGE{---麻雀ゲームの作成---}}
+  \author{
+    学籍番号：16426 \\ 5年 電子情報工学科 23番 \\ 福澤 大地 \\ \\
+    学籍番号：164xx \\ 5年 電子情報工学科 xx番 \\ 多田 洋輔
+  }
+	\date{提出日 : 2020年8月6日}
+  \maketitle
+\end{titlepage}
+
+
+\section{作成したプログラム}
+
+
+
+\section{クラス図}
+本システムのクラス図を図\ref{fig:class}に示す。
+
+\begin{figure}[p]
+  \centering
+  \includegraphics[height=23cm]{images/mahjong.pdf}
+  \caption{クラス図}
+  \label{fig:class}
+\end{figure}
+
+
+\section{動作説明}
+
+
+\section{プログラムリスト}
+
+
+
+
+\end{document}
