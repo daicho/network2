@@ -1,10 +1,10 @@
 # Fdb version 3
-["dvipdf"] 1596645546 "network2-report.dvi" "network2-report.pdf" "network2-report" 1596645552
-  "network2-report.dvi" 1596645546 436676 bebd56a1b8aef1b701e8cbe42c98b7bd "latex"
+["dvipdf"] 1596646432 "network2-report.dvi" "network2-report.pdf" "network2-report" 1596646437
+  "network2-report.dvi" 1596646431 436728 3ac06f58f649fb1f963ee13a0b3811de "latex"
   (generated)
   "network2-report.pdf"
-["latex"] 1596645537 "c:/Users/burdock/Documents/GitHub/network2/network2-report.tex" "network2-report.dvi" "network2-report" 1596645552
-  "c:/Users/burdock/Documents/GitHub/network2/network2-report.tex" 1596645524 11417 fbf9b2d1d762c73e7b835a1bf5eb6c3a ""
+["latex"] 1596646423 "c:/Users/burdock/Documents/GitHub/network2/network2-report.tex" "network2-report.dvi" "network2-report" 1596646437
+  "c:/Users/burdock/Documents/GitHub/network2/network2-report.tex" 1596646236 11474 367cab0fbdc7ea32f58e014135a7fa40 ""
   "d:/w32tex/share/texmf-dist/fonts/tfm/ptex-fonts/jis/jis.tfm" 1519818042 468 53f854284f6afa6c36aaa2d1090ecc12 ""
   "d:/w32tex/share/texmf-dist/fonts/tfm/ptex-fonts/jis/jisg.tfm" 1519818042 468 53f854284f6afa6c36aaa2d1090ecc12 ""
   "d:/w32tex/share/texmf-dist/fonts/tfm/ptex-fonts/standard/tgoth10.tfm" 1519818042 856 7404843a5f798859944d7973a47821d5 ""
@@ -172,8 +172,8 @@
   "mahjong/mjgame/system/player.py" 1596637738 1579 5cdfe12f47b0b6e208b15afdd1f3cb32 ""
   "mahjong/mjgame/system/tehai.py" 1596637738 6696 7b3b038662fb6701cd8e9d22248b72c0 ""
   "mdframed.sty" 1596637738 55181 cdeb4d694a1ebf23ab3164c8412f2364 ""
-  "network2-report.aux" 1596645546 5520 6616d45be4d06caa6de87b0f1b36b739 ""
-  "network2-report.tex" 1596645524 11417 fbf9b2d1d762c73e7b835a1bf5eb6c3a ""
+  "network2-report.aux" 1596646431 5520 6616d45be4d06caa6de87b0f1b36b739 ""
+  "network2-report.tex" 1596646236 11474 367cab0fbdc7ea32f58e014135a7fa40 ""
   "plistings.sty" 1596637738 11156 259dff469740cc9d4b5557b2f7cdf071 ""
   (generated)
   "network2-report.aux"
