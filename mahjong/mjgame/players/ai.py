@@ -112,7 +112,7 @@ class Tenari(player.Player):
         return temp_tehai.shanten() < self.tehai.shanten()
 
 # 面子手のみ
-class Menzen(Tenari):
+class AI(Tenari):
     def __init__(self):
         super().__init__()
         self.name = "AI"

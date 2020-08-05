@@ -231,7 +231,7 @@ if __name__ == "__main__":
         hai_set.extend(mj.Hai(3, i) for j in range(4))
 
     # プレイヤー
-    players = [mp.Human(), mp.Menzen()]
+    players = [mp.Human(), mp.AI(), mp.Human(), mp.AI()]
 
     game = GameServer(hai_set, players, 25000)
     game.connect()

@@ -62,8 +62,8 @@
 \begin{titlepage}
   \title{\huge{ネットワークプログラミングI\hspace{-.1em}I} \\ \LARGE{---麻雀ゲームの作成---}}
   \author{
-    学籍番号：16426 \\ 5年 電子情報工学科 23番 \\ 福澤 大地 \\ \\
-    学籍番号：164xx \\ 5年 電子情報工学科 xx番 \\ 多田 洋輔
+    学籍番号：164xx \\ 5年 電子情報工学科 xx番 \\ 多田 洋輔 \\ \\
+    学籍番号：16426 \\ 5年 電子情報工学科 23番 \\ 福澤 大地
   }
 	\date{提出日 : 2020年8月6日}
   \maketitle
@@ -71,11 +71,21 @@
 
 
 \section{作成したプログラム}
+オンライン対戦可能な麻雀ゲームを作成した。
+ルールはオーソドックスな日本のリーチ麻雀であるが、3人/4人対戦どちらも対応していたり、
+AIを交えた対戦が可能であったりと、細かな機能を充実させた。
+また、操作はCUIで行うが、OpenCVを用いることで卓上の状態をグラフィカルに表示した。
 
+使用したプログラミング言語は、Python 3.7.4である。
+
+
+\section{動作説明}
 
 
 \section{クラス図}
 本システムのクラス図を図\ref{fig:class}に示す。
+詳細な説明は省略するが、ゲームの進行を表す\texttt{Game}クラスを\texttt{GameServer}クラスに継承し、
+ソケット通信でオンライン対戦を行う機能をオーバーライドしている。
 
 \begin{figure}[p]
   \centering
@@ -85,12 +95,50 @@
 \end{figure}
 
 
-\section{動作説明}
+\section{ファイル構造}
+本システムのファイル構造を図\ref{fig:file}に示す。
+\texttt{GameServer.py}はサーバーサイドのプログラム、
+\texttt{GameClient.py}はクライアントサイドのプログラムである。
+その他の麻雀システムのプログラムは\texttt{mjgame}フォルダ内にまとめられている。
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[height=13cm]{images/file.pdf}
+  \caption{ファイル構造}
+  \label{fig:file}
+\end{figure}
 
 
 \section{プログラムリスト}
+サーバーサイドのプログラムをリスト\ref{lst:GameServer}に、
+クライアントサイドのプログラムをリスト\ref{lst:GameClient}に示す。
+その他の麻雀システムのプログラムはリスト\ref{lst:mjgame}--\ref{lst:graphic}に示す。
 
+\lstinputlisting[style=python,caption=GameServer.py,label=lst:GameServer]{mahjong/GameServer.py}
 
+\lstinputlisting[style=python,caption=GameClient.py,label=lst:GameClient]{mahjong/GameClient.py}
+
+\lstinputlisting[style=python,caption=mjgame/\_\_init\_\_.py,label=lst:mjgame]{mahjong/mjgame/__init__.py}
+
+\lstinputlisting[style=python,caption=mjgame/system/\_\_init\_\_.py,label=lst:system]{mahjong/mjgame/system/__init__.py}
+
+\lstinputlisting[style=python,caption=mjgame/system/core.py,label=lst:core]{mahjong/mjgame/system/core.py}
+
+\lstinputlisting[style=python,caption=mjgame/system/game.py,label=lst:game]{mahjong/mjgame/system/game.py}
+
+\lstinputlisting[style=python,caption=mjgame/system/player.py,label=lst:player]{mahjong/mjgame/system/player.py}
+
+\lstinputlisting[style=python,caption=mjgame/system/tehai.py,label=lst:tehai]{mahjong/mjgame/system/tehai.py}
+
+\lstinputlisting[style=python,caption=mjgame/players/\_\_init\_\_.py,label=lst:players]{mahjong/mjgame/players/__init__.py}
+
+\lstinputlisting[style=python,caption=mjgame/players/human.py,label=lst:human]{mahjong/mjgame/players/human.py}
+
+\lstinputlisting[style=python,caption=mjgame/players/ai.py,label=lst:ai]{mahjong/mjgame/players/ai.py}
+
+\lstinputlisting[style=python,caption=mjgame/graphic/\_\_init\_\_.py,label=lst:graphici]{mahjong/mjgame/graphic/__init__.py}
+
+\lstinputlisting[style=python,caption=mjgame/graphic/graphic.py,label=lst:graphic]{mahjong/mjgame/graphic/graphic.py}
 
 
 \end{document}
