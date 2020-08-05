@@ -62,7 +62,7 @@
 \begin{titlepage}
   \title{\huge{ネットワークプログラミングI\hspace{-.1em}I} \\ \LARGE{---麻雀ゲームの作成---}}
   \author{
-    学籍番号：164xx \\ 5年 電子情報工学科 xx番 \\ 多田 洋輔 \\ \\
+    学籍番号：16418 \\ 5年 電子情報工学科 16番 \\ 多田 洋輔 \\ \\
     学籍番号：16426 \\ 5年 電子情報工学科 24番 \\ 福澤 大地
   }
 	\date{提出日 : 2020年8月6日}
@@ -80,8 +80,177 @@ AIを交えた対戦が可能であったりと、細かな機能を充実させ
 
 
 \section{動作説明}
+麻雀で行う主な動作について、サーバー側とプレイヤー側でどのような動作をしているかを示す。
 
+\subsection{ポン}
+図\ref{fig:pon_server}から図\ref{fig:pon_gui}に打牌時の動作を示す。
 
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width = 0.8\linewidth]{images/pon_server.png}
+  \caption{ポンの動作（サーバー）}
+  \label{fig:pon_server}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width = 0.2\linewidth]{images/pon_console.png}
+  \caption{ポンの動作（コンソール）}
+  \label{fig:pon_console}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width = 0.8\linewidth]{images/pon_gui.png}
+  \caption{ポンの動作（GUI）}
+  \label{fig:pon_gui}
+\end{figure}
+
+サーバーではポンをしたプレイヤーの手牌からポンの構成牌がなくなっている。コンソールではポンするかどうかに対し、y(yes)を入力している。これに対しGUIにはポンの様子が表示されている。
+
+\subsection{チー}
+図\ref{fig:chi_server}から図\ref{fig:chi_gui}に打牌時の動作を示す。
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width = 0.8\linewidth]{images/chi_server.png}
+  \caption{チーの動作（サーバー）}
+  \label{fig:chi_server}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width = 0.4\linewidth]{images/chi_console.png}
+  \caption{チーの動作（コンソール）}
+  \label{fig:chi_console}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width = 0.8\linewidth]{images/chi_gui.png}
+  \caption{チーの動作（GUI）}
+  \label{fig:chi_gui}
+\end{figure}
+
+サーバーでは、チーをしたプレイヤーが以前にポンをしていたため、手牌から2鳴き分の構成牌が消えている。コンソールではチーするかどうかに対し、y(yes)を入力している。これに対しGUIにはチーの様子が表示されている。
+
+\subsection{暗カン}
+図\ref{fig:ankan_server}から図\ref{fig:ankan_gui}に打牌時の動作を示す。
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width = 0.8\linewidth]{images/ankan_server.png}
+  \caption{暗カンの動作（サーバー）}
+  \label{fig:ankan_server}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width = 0.8\linewidth]{images/ankan_gui.png}
+  \caption{暗カンの動作（GUI）}
+  \label{fig:ankan_gui}
+\end{figure}
+
+サーバーでは暗カンをしたプレイヤーの手牌から暗カンに使われた牌が消えている。AIが暗カンをしたためコンソールの表示はないが、GUIには暗カンの様子が表示されている。
+
+\subsection{明カン}
+図\ref{fig:minkan_server}から図\ref{fig:minkan_gui}に打牌時の動作を示す。
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width = 0.8\linewidth]{images/minkan_server.png}
+  \caption{明カンの動作（サーバー）}
+  \label{fig:minkan_server}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width = 0.8\linewidth]{images/minkan_console.png}
+  \caption{明カンの動作（コンソール）}
+  \label{fig:minkan_console}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width = 0.8\linewidth]{images/minkan_gui.png}
+  \caption{明カンの動作（GUI）}
+  \label{fig:minkan_gui}
+\end{figure}
+
+サーバーでは明カンを舌プレイヤーの手牌から明カンに使われた牌が消えている。コンソールでは暗カンするかどうかに対し、y(yes)が入力されている。これに対しGUIには明カンの様子が表示されている。
+
+\subsection{ロン}
+図\ref{fig:ron_server}から図\ref{fig:ron_gui}に打牌時の動作を示す。
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width = 0.8\linewidth]{images/ron_server.png}
+  \caption{ロンの動作（サーバー）}
+  \label{fig:ron_server}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width = 0.8\linewidth]{images/ron_console.png}
+  \caption{ロンの動作（コンソール）}
+  \label{fig:ron_console}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width = 0.8\linewidth]{images/ron_gui.png}
+  \caption{ロンの動作（GUI）}
+  \label{fig:ron_gui}
+\end{figure}
+
+サーバーではロンに関わったプレイヤーと、役の内容が表示されている。コンソールではロンするかどうかに対しy(yes)が入力されている。これに対しGUIではロンをした牌が赤みがかり、ロンを表現している。
+
+\subsection{ツモ}
+図\ref{fig:tsumo_server}から図\ref{fig:tsumo_gui}に打牌時の動作を示す。
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width = 0.8\linewidth]{images/tsumo_server.png}
+  \caption{ツモの動作（サーバー）}
+  \label{fig:tsumo_server}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width = 0.5\linewidth]{images/tsumo_console.png}
+  \caption{ツモの動作（コンソール）}
+  \label{fig:tsumo_console}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width = 0.8\linewidth]{images/tsumo_gui.png}
+  \caption{ツモの動作（GUI）}
+  \label{fig:tsumo_gui}
+\end{figure}
+
+サーバーではツモをしたプレイヤーと、役の内容が表示されている。コンソールではツモをするかどうかに対しy(yes)を入力している。これに対しGUIにはツモった牌を表示している。
+
+\subsection{流局}
+図\ref{fig:ryukyoku_server}から図\ref{fig:ryukyoku_gui}に打牌時の動作を示す。
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width = 0.7\linewidth]{images/ryukyoku_server.png}
+  \caption{流局の動作（サーバー）}
+  \label{fig:ryukyoku_server}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width = 0.8\linewidth]{images/ryukyoku_gui.png}
+  \caption{流局の動作（GUI）}
+  \label{fig:ryukyoku_gui}
+\end{figure}
+
+サーバーでは各プレイヤーのテンパイ状況を表示している。これに対しGUIではテンパイのプレイヤーの手牌が倒されて表示されている。
+
+\newpage
 \section{クラス図}
 本システムのクラス図を図\ref{fig:class}に示す。
 詳細な説明は省略するが、ゲームの進行を表す\texttt{Game}クラスを\texttt{GameServer}クラスに継承し、
@@ -93,7 +262,6 @@ AIを交えた対戦が可能であったりと、細かな機能を充実させ
   \caption{クラス図}
   \label{fig:class}
 \end{figure}
-
 
 \section{ファイル構造}
 本システムのファイル構造を図\ref{fig:file}に示す。
@@ -108,7 +276,7 @@ AIを交えた対戦が可能であったりと、細かな機能を充実させ
   \label{fig:file}
 \end{figure}
 
-
+\newpage
 \section{プログラムリスト}
 サーバーサイドのプログラムをリスト\ref{lst:GameServer}に、
 クライアントサイドのプログラムをリスト\ref{lst:GameClient}に示す。
