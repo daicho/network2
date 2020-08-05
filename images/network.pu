@@ -7,7 +7,7 @@ Game o-- Player
 Game o-- GameReader
 Game o-- Yama
 Game <|-- GameServer
-GameServer <.. EventKind
+GameServer ..> EventKind
 Player o-- GameReader
 Player o-- Tehai
 Player o-- Kawa
