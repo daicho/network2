@@ -1,0 +1,313 @@
+@startuml mahjong
+
+skinparam Shadowing false
+skinparam classAttributeIconSize 0
+
+Game o-- Player
+Game o-- GameReader
+Game o-- Yama
+Game <|-- GameServer
+GameServer <.. EventKind
+Player o-- GameReader
+Player o-- Tehai
+Player o-- Kawa
+Player <|-- Human
+Player <|-- Menzen
+Tehai o-- Hai
+Tehai o-- Furo
+GameReader o-- PlayerReader
+PlayerReader o-- TehaiReader
+PlayerReader o-- Kawa
+TehaiReader o-- Hai
+TehaiReader o-- Furo
+Furo o-- Hai
+Furo o-- FuroKind
+Kawa o-- KawaHai
+KawaHai o-- Hai
+
+class Game {
+    + calculator: HandCalculator
+    + hai_set: Hai[]
+    + players: Player[]
+    + player_num: int
+    + start_point: int
+    + game_reader: GameReader
+    + bakaze: int
+    + kyoku: int
+    + honba: int
+    + kyotaku: int
+    + turn: int
+    + cur_player: Player
+    + yama: Yama
+    + dora_hais: Hai[]
+    + uradora_hais: Hai[]
+    + doras: tuple<int, int>[]
+    + uradoras: tuple<int, int>[]
+
+    + __init__(hai_set: Hai[], players: Player[], start_point: int)
+    + start()
+    + start_kyoku(): tuple<bool, bool>
+    + next_kyoku(rencha: bool, ryukyoku: bool)
+    + next_player()
+    + change_player(chicha: int)
+    + add_dora()
+    + update_game_reader(open_players: Player[], uradora: bool)
+    + yaku(player: Player, is_tsumo: bool, agari_hai: Hai, chankan: bool): HandResponse
+    + dora_kind(hai: Hai): tuple<int, int>
+    + kyoku_name(): str
+    + jikaze(player: Player): int
+    + haipai(player: Player)
+    + tsumo_pop(player: Player)
+    + dahai(player: Player, index: int): KawaHai
+    + richi(player: Player)
+    + tsumo(player: Player)
+    + ron(player: Player, target: KawaHai, whose: Player, chankan: bool)
+    + ankan(player: Player, hais: Hai[])
+    + kakan(player: Player, hais: Hai[])
+    + minkan(player: Player, hais: Hai[], target: KawaHai, whose: Player)
+    + pon(player: Player, hais: Hai[], target: KawaHai, whose: Player)
+    + chi(player: Player, hais: Hai[], target: KawaHai, whose: Player)
+    + ryukyoku()
+    + check_tsumo(player: Player): bool
+    + check_ron(player: Player, target: Hai, whose: Player): bool
+    + check_ankan(player: Player): Hais[][]
+    + check_kakan(player: Player): Hais[]
+    + check_minkan(player: Player, target: Hai): Hais[][]
+    + check_pon(player: Player, target: Hai): Hais[][]
+    + check_chi(player: Player, target: Hai): Hais[][]
+    + on_dahai(player: Player): int
+    + on_richi(player: Player): bool
+    + on_tsumo(player: Player): bool
+    + on_ron(player: Player, target: Hai, whose: Player): bool
+    + on_ankan(player: Player, target: Hai): bool
+    + on_minkan(player: Player, hais: Hai[], target: Hai, whose: Player): bool
+    + on_kakan(player: Player, hais: Hai[], target: Hai): bool
+    + on_pon(player: Player, hais: Hai[], target: Hai, whose: Player): bool
+    + on_chi(player: Player, hais: Hai[], target: Hai, whose: Player): bool
+}
+
+class GameServer {
+    + screen: Screen
+
+    + __init__(hai_set: Hai[], players: Player[], start_point: int)
+    + connect()
+    + receive(player: Player): bytes
+    + request(player: Player, event_kind: EventKind): bytes
+    + update_game_reader(open_players: Player[], uradora: bool)
+    + start()
+    + start_kyokuo(): tuple<bool, bool>
+    + on_dahai(player: Player): int
+    + on_richi(player: Player): bool
+    + on_tsumo(player: Player): bool
+    + on_ron(player: Player, target: Hai, whose: Player): bool
+    + on_ankan(player: Player, target: Hai): bool
+    + on_minkan(player: Player, hais: Hai[], target: Hai, whose: Player): bool
+    + on_kakan(player: Player, hais: Hai[], target: Hai): bool
+    + on_pon(player: Player, hais: Hai[], target: Hai, whose: Player): bool
+    + on_chi(player: Player, hais: Hai[], target: Hai, whose: Player): bool
+}
+
+enum EventKind {
+    UPDATE
+    DAHAI
+    RICHI
+    TSUMO
+    RON
+    ANKAN
+    MINKAN
+    KAKAN
+    PON
+    CHI
+    RESULT
+    COMPLATE
+    OVER
+    END
+}
+
+class Yama {
+    + hais: Hai[]
+    + remain: int
+    + doras: Hai[]
+    + uradoras: Hai[]
+
+    + __init__(hai_set: Hai[])
+    + pop(): Hai
+    + add_dora()
+}
+
+abstract class Player {
+    + name: str
+    + tehai: Tehai
+    + kawa: Kawa
+    + richi: bool
+    + furo: bool
+    + ippatsu: bool
+    + rinshan: bool
+    + game: GameReader
+    + chicha: int
+    + point: int
+
+    + __init__()
+    + relative(other: Player): int
+    + setup(game: GameReader, chicha: int, start_point: int)
+    + reset()
+    + {abstract} on_dahai(): int
+    + {abstract} on_richi(): bool
+    + {abstract} on_tsumo(): bool
+    + {abstract} on_ron(target: Hai, whose: int): bool
+    + {abstract} on_ankan(target: Hai): bool
+    + {abstract} on_minkan(hais: Hai[], target: Hai, whose: int): bool
+    + {abstract} on_kakan(hais: Hai[], target: Hai): bool
+    + {abstract} on_pon(hais: Hai[], target: Hai, whose: int): bool
+    + {abstract} on_chi(hais: Hai[], target: Hai, whose: int): bool
+}
+
+class Human {
+    + name: str
+
+    + __init__()
+    + confirm(message: str, default: bool): bool
+    + on_dahai(): int
+    + on_richi(): bool
+    + on_tsumo(): bool
+    + on_ron(target: Hai, whose: int): bool
+    + on_ankan(target: Hai): bool
+    + on_minkan(hais: Hai[], target: Hai, whose: int): bool
+    + on_kakan(hais: Hai[], target: Hai): bool
+    + on_pon(hais: Hai[], target: Hai, whose: int): bool
+    + on_chi(hais: Hai[], target: Hai, whose: int): bool
+}
+
+class Menzen {
+    + name: str
+
+    + __init__()
+    + on_dahai(): int
+    + on_richi(): bool
+    + on_tsumo(): bool
+    + on_ron(target: Hai, whose: int): bool
+    + on_ankan(target: Hai): bool
+    + on_minkan(hais: Hai[], target: Hai, whose: int): bool
+    + on_kakan(hais: Hai[], target: Hai): bool
+    + on_pon(hais: Hai[], target: Hai, whose: int): bool
+    + on_chi(hais: Hai[], target: Hai, whose: int): bool
+}
+
+class Tehai {
+    + calculator: Shanten
+    + hais: Hai[]
+    + furos: Furo[]
+    + tsumo_hai: Hai
+    + hai_num: int
+
+    + __init__(hais: Hai[], furos: Furo[])
+    + store()
+    + tsumo(hai: Hai)
+    + append(hais: Hai[])
+    + insert(index: int, hai: Hai)
+    + pop(index: int): Hai
+    + remove(hai): Hai
+    + find(kind: int, num: int): Hai
+    + find_multi(kinds: int[], nums: int[]): Hai[]
+    + sort()
+    + anakn_able(): Hais[][]
+    + kakan_able(): Hais[]
+    + minkan_able(target: Hai): Hais[][]
+    + pon_able(target: Hai): Hais[][]
+    + chi_able(target: Hai): Hais[][]
+    + ankan(hais: Hai[])
+    + kakan(hai: Hai)
+    + minkan(hais: Hai[], target: Hai, direct: int)
+    + pon(hais: Hai[], target: Hai, direct: int)
+    + chi(hais: Hai[], target: Hai, direct: int)
+    + show()
+    + shanten(): int
+}
+
+class GameReader {
+    + hai_set: Hai[]
+    + player_num: int
+    + start_point: int
+    + bakaze: int
+    + kyoku: int
+    + honba: int
+    + kyotaku: int
+    + players: PlayerReader[]
+    + turn: int
+    + cur_player: PlayerReader
+    + yama_remain: int
+    + dora_hais: Hai[]
+    + uradora_hais: Hai[]
+    + doras: tuple<int, int>[]
+    + uradoras: tuple<int, int>[]
+
+    + __init__(player_num: int, start_point: int)
+}
+
+class PlayerReader {
+    + name: str
+    + point: int
+    + tehai: TehaiReader
+    + kawa: Kawa
+    + richi: bool
+    + furo: bool
+    + ippatsu: bool
+
+    + __init__(start_point: int)
+}
+
+class TehaiReader {
+    + hais: Hai[]
+    + furos: Furo[]
+    + hai_num: int
+    + tsumo_hai: Hai
+    + exist_tsumo_hai: bool
+
+    + __init__()
+}
+
+class Furo {
+    + hais: Hai[]
+    + kind: FuroKind
+    + direct: int
+
+    + __init__(hais: Hai[], kind: FuroKind, direct: int)
+}
+
+enum FuroKind {
+    PON
+    CHI
+    ANKAN
+    MINKAN
+    KAKAN
+}
+
+class Kawa {
+    + hais: KawaHai[]
+
+    + __init__()
+    + append(hai: Hai, tsumogiri, richi)
+}
+
+class KawaHai {
+    + hai: Hai
+    + tsumogiri: bool
+    + richi: bool
+    + furo: bool
+    + hoju: bool
+
+    + __init__(hai: Hai, tsumogiri: bool, richi: bool)
+}
+
+class Hai {
+    + kind: int
+    + num: int
+    + red: bool
+
+    + __init__(kind: int, num: int, red: bool)
+    + __eq__(other: Hai): bool
+    + __lt__(other: Hai): bool
+    + __gt__(other: Hai): bool
+}
+
+@enduml
