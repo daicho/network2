@@ -1,10 +1,10 @@
 # Fdb version 3
-["dvipdf"] 1596646432 "network2-report.dvi" "network2-report.pdf" "network2-report" 1596646437
-  "network2-report.dvi" 1596646431 436728 3ac06f58f649fb1f963ee13a0b3811de "latex"
+["dvipdf"] 1596647987 "network2-report.dvi" "network2-report.pdf" "network2-report" 1596647992
+  "network2-report.dvi" 1596647987 437564 b23a1e2c0e537d6e39fa5c74694dce72 "latex"
   (generated)
   "network2-report.pdf"
-["latex"] 1596646423 "c:/Users/burdock/Documents/GitHub/network2/network2-report.tex" "network2-report.dvi" "network2-report" 1596646437
-  "c:/Users/burdock/Documents/GitHub/network2/network2-report.tex" 1596646236 11474 367cab0fbdc7ea32f58e014135a7fa40 ""
+["latex"] 1596647979 "c:/Users/burdock/Documents/GitHub/network2/network2-report.tex" "network2-report.dvi" "network2-report" 1596647992
+  "c:/Users/burdock/Documents/GitHub/network2/network2-report.tex" 1596647966 11227 80fc37d8abcdbcd3d78cf4d1ad64fa87 ""
   "d:/w32tex/share/texmf-dist/fonts/tfm/ptex-fonts/jis/jis.tfm" 1519818042 468 53f854284f6afa6c36aaa2d1090ecc12 ""
   "d:/w32tex/share/texmf-dist/fonts/tfm/ptex-fonts/jis/jisg.tfm" 1519818042 468 53f854284f6afa6c36aaa2d1090ecc12 ""
   "d:/w32tex/share/texmf-dist/fonts/tfm/ptex-fonts/standard/tgoth10.tfm" 1519818042 856 7404843a5f798859944d7973a47821d5 ""
@@ -172,10 +172,10 @@
   "mahjong/mjgame/system/player.py" 1596637738 1579 5cdfe12f47b0b6e208b15afdd1f3cb32 ""
   "mahjong/mjgame/system/tehai.py" 1596637738 6696 7b3b038662fb6701cd8e9d22248b72c0 ""
   "mdframed.sty" 1596637738 55181 cdeb4d694a1ebf23ab3164c8412f2364 ""
-  "network2-report.aux" 1596646431 5520 6616d45be4d06caa6de87b0f1b36b739 ""
-  "network2-report.tex" 1596646236 11474 367cab0fbdc7ea32f58e014135a7fa40 ""
+  "network2-report.aux" 1596647987 5525 e79815054688559d6d83587b6fc5ea91 ""
+  "network2-report.tex" 1596647966 11227 80fc37d8abcdbcd3d78cf4d1ad64fa87 ""
   "plistings.sty" 1596637738 11156 259dff469740cc9d4b5557b2f7cdf071 ""
   (generated)
-  "network2-report.aux"
   "network2-report.dvi"
   "network2-report.log"
+  "network2-report.aux"
